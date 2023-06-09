@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	int n,temp,num;
+
+	scanf("%d", &n);
+	for(int i=1;i<n;i++)
+	{temp=i,num=i;while(temp>0){num+=temp%10;temp/=10;}if(num==n){printf("%d",i);n=0;break;}}
+	if(n!=0){printf("0");}
+}
