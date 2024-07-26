@@ -1,4 +1,5 @@
 import sys
+import math
 d = sys.stdin.read().splitlines()
 
 n, k = map(int, d[0].split())
@@ -10,41 +11,10 @@ for i in range(n) :
     else :
         f.append(g)
 count = 0
-m.sort()
-f.sort()
 
-lis = []
-for i in m :
-    if lis == [] :
-        count += 1
-        lis.append(i)
-        continue
-    if lis[0] != i :
-        count += 1
-        lis.clear()
-        lis.append(i)
-        continue
-    if len(lis) == k :
-        count += 1
-        lis.clear()
-        lis.append(i)
-        continue
-    lis.append(i)
-for i in f :
-    if lis == [] :
-        lis.append(i)
-        count += 1
-        continue
-    if lis[0] != i :
-        count += 1
-        lis.clear()
-        lis.append(i)
-        continue
-    if len(lis) == k :
-        count += 1
-        lis.clear()
-        lis.append(i)
-        continue
-    lis.append(i)
-print(count)
+ml = []
+fl = []
+for i in range(6) :
+    count += math.ceil(m.count(i + 1) / k) + math.ceil(f.count(i + 1) / k)
     
+print(count)
